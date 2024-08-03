@@ -1,3 +1,63 @@
+:root {
+	--main-radius: 5px;
+	--main-padding: 5px;
+}
+
+body {
+	background-color: #352d4d;
+}
+
+.container {
+	display: grid;
+	height: 100vh;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 0.5fr 0.8fr 1fr 1fr 1fr;
+	/* grid-template-rows: auto; */
+	grid-template-areas:
+		" . . . . . . "
+		" . titulo titulo titulo titulo . "
+		" . info info info info . "
+		" .  calculadora resultado resultado misperros . "
+		" .  calculadora resultado resultado misperros . "
+		" . . . . . . ";
+	column-gap: 0.5rem;
+	row-gap: 0.5rem;
+}
+
+.titulo {
+	background-color: #92e0a9;
+	grid-area: titulo;
+	border-radius: var(--main-radius);
+	padding: var(--main-padding);
+}
+.info {
+	background-color: #69b0c1;
+	grid-area: info;
+	border-radius: var(--main-radius);
+	padding: var(--main-padding);
+}
+
+#calculadora {
+	background-color: #6d6192;
+	grid-area: calculadora;
+	border-radius: var(--main-radius);
+	padding: var(--main-padding);
+}
+
+#resultado {
+	background-color: #6d6192;
+	grid-area: resultado;
+	border-radius: var(--main-radius);
+	padding: var(--main-padding);
+}
+
+#misperros {
+	background-color: #6d6192;
+	grid-area: misperros;
+	border-radius: var(--main-radius);
+	padding: var(--main-padding);
+}
+
 footer {
 	position: fixed;
 	bottom: 0;
@@ -6,4 +66,17 @@ footer {
 	padding: 10px 0;
 	font-size: 16px;
 	color: #333;
+}
+
+@media only screen and (max-width: 550px) {
+	.container {
+		grid-template-columns: 1fr;
+		grid-template-rows: 0.4fr 1fr 0.5fr 1fr 1fr;
+		grid-template-areas:
+			"titulo"
+			"info"
+			"misperros"
+			"cacluladora"
+			"resultado";
+	}
 }
