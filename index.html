@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles.css" />
+		<title>Calculadora BARF</title>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Calculadora BARF</h1>
+				<h4>Edicion Perruna</h4>
+			</header>
+			<section>
+				<p>
+					¿Quieres saber cuánto debe comer un perro con BARF y cuál es su dosis
+					óptima? ¡Pruebe la sencilla calculadora de comida para perros
+					BARF!Introduce los datos de tu perro y la calculadora BARF calculará
+					con precisión la dosis diaria de comida para perros. La cantidad de
+					comida para perros depende de factores individuales como la edad, el
+					peso, la actividad y la salud. Tenga en cuenta que no hay dos mascotas
+					iguales. En general, recomendamos alimentar a un perro adulto dos
+					veces al día. Los cachorros necesitan una alimentación más frecuente,
+					que disminuye gradualmente con la edad. Importante! Los resultados de
+					la calculadora de alimentación deben usarse sólo como guía. Siempre es
+					aconsejable recurrir a un nutricionista especialiazdo para asegurarse
+					el correcto aporte de nutrientes en la alimentacion asi como
+					contemplar enfermedades cronicas que puedan requerir de una dieta mas
+					especifica.
+				</p>
+			</section>
+			<div id="calculadora">
+				<form>
+					<label for="Nombre">Nombre Del Perro:</label>
+					<input type="text" name="nombre" required />
+					<label for="edad">Edad en años:</label>
+					<input type="number" name="edad" required min="0" max="30" />
+					<label for="peso">Peso actual en Kg:</label>
+					<input type="number" name="peso" min="1" max="90" />
+					<label for="actividad">Actividad diaria:</label>
+					<select name="actividad" required>
+						<option value="bajo">Bajo (una hora o menos por dia)</option>
+						<option value="medio">Medio (al menos dos horas por dia)</option>
+						<option value="bajo">Alto (mas de tres horas por dia)</option>
+					</select>
+					<button type="submit">BARF!</button>
+				</form>
+			</div>
+			<div id="resultado">
+				<h2>Composicion diaria para "nombre perro"</h2>
+				<p>Peso: "definido por input peso" kg</p>
+				<p>Edad: definido por input edad" años</p>
+				<p>Actividad: "definido por intput actividad"</p>
+				<p>Peso de la porcion diaria: "desde resultaos</p>
+				<h3>Composicion:</h3>
+				<ul>
+					<li>Huesos Carnosos:</li>
+					<li>Carne Muscular:</li>
+					<li>Vegetales:</li>
+					<li>Semillas:</li>
+				</ul>
+			</div>
+			<div id="mis-perros">
+				<h2>Mis Perros</h2>
+				<div class="avatar-container">
+					<div class="avatar">
+						<img src="https://via.placeholder.com/50" alt="Avatar Perro" />
+					</div>
+					<div class="avatar-name">Kona</div>
+				</div>
+			</div>
+		</div>
+		<footer>Made by N3fia</footer>
+		<!-- <script src="./barf.js"></script> -->
+	</body>
+</html>
