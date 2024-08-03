@@ -38,7 +38,7 @@
 }
 
 body {
-	background-image: url("/assets/paw@1x-1.0s-1084px-322px\ \(1\).svg");
+	background-image: url("./assets/paw@1x-1.0s-1084px-322px\ \(1\).svg");
 	background-repeat: repeat; /* Repeats the SVG to cover the entire body */
 	background-size: auto; /* Keeps the SVG at its natural size */
 	background-position: center; /* Centers the SVG */
