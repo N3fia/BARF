@@ -5,14 +5,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="styles.css" />
 		<title>Calculadora BARF</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
 	<body>
 		<div class="container">
 			<header class="titulo">
-				<h1>Calculadora BARF</h1>
-				<h4>Edicion Perruna</h4>
+				<h1 class="amatic-sc-bold">Calculadora BARF</h1>
+				<h4 class="amatic-sc-regular">Edicion Perruna</h4>
 			</header>
-			<section class="info">
+			<section class="info archivo-texto">
 				<p>
 					¿Quieres saber cuánto debe comer un perro con BARF y cuál es su dosis
 					óptima? ¡Pruebe la sencilla calculadora de comida para perros
@@ -30,30 +36,49 @@
 					especifica.
 				</p>
 			</section>
-			<div id="calculadora">
-				<form>
-					<label for="Nombre">Nombre Del Perro:</label>
-					<input type="text" name="nombre" required />
-					<label for="edad">Edad en años:</label>
-					<input type="number" name="edad" required min="0" max="30" />
-					<label for="peso">Peso actual en Kg:</label>
-					<input type="number" name="peso" min="1" max="90" />
-					<label for="actividad">Actividad diaria:</label>
-					<select name="actividad" required>
-						<option value="bajo">Bajo (una hora o menos por dia)</option>
-						<option value="medio">Medio (al menos dos horas por dia)</option>
-						<option value="bajo">Alto (mas de tres horas por dia)</option>
-					</select>
+			<div class="calculadora">
+				<form id="datos">
+					<p>
+						<label
+							>Nombre Del Perro:<input type="text" name="nombre" required />
+						</label>
+					</p>
+
+					<p>
+						<label
+							>Edad en años:
+							<input type="number" name="edad" required min="0" max="30"
+						/></label>
+					</p>
+
+					<p>
+						<label
+							>Peso actual en Kg:
+							<input type="number" name="peso" min="1" max="90"
+						/></label>
+					</p>
+
+					<p>
+						<label
+							>Actividad diaria:
+							<select name="actividad" required>
+								<option value="bajo">Bajo (-1 hora)</option>
+								<option value="medio">Medio (2 horas)</option>
+								<option value="bajo">Alto (+3 horas)</option>
+							</select></label
+						>
+					</p>
+
 					<button type="submit">BARF!</button>
 				</form>
 			</div>
-			<div id="resultado">
-				<h2>Composicion diaria para "nombre perro"</h2>
-				<p>Peso: "definido por input peso" kg</p>
-				<p>Edad: definido por input edad" años</p>
-				<p>Actividad: "definido por intput actividad"</p>
+			<div class="resultado archivo-texto">
+				<h3 class="archivo-heading">Receta para "nombre perro"</h3>
+				<p>Peso: "input peso" kg</p>
+				<p>Edad: "input edad" años</p>
+				<p>Actividad: " intput actividad"</p>
 				<p>Peso de la porcion diaria: "desde resultaos</p>
-				<h3>Composicion:</h3>
+				<h3 class="archivo-heading">Composicion:</h3>
 				<ul>
 					<li>Huesos Carnosos:</li>
 					<li>Carne Muscular:</li>
@@ -62,13 +87,26 @@
 				</ul>
 			</div>
 			<div id="misperros">
-				<h2>Mis Perros</h2>
+				<h3 class="archivo-heading">Mis Perros</h3>
+			
 				<div class="avatar-container">
 					<div class="avatar">
-						<img src="https://via.placeholder.com/50" alt="Avatar Perro" />
+						<img src="./assets/adult.png" alt="Avatar Perro" />
 					</div>
 					<div class="avatar-name">Kona</div>
 				</div>
+				<div class="avatar-container">
+					<div class="avatar">
+						<img src="/assets/puppy.png" alt="Avatar Perro" />
+					</div>
+					<div class="avatar-name">Kona</div>
+				</div>
+				<div class="avatar">
+					<img src="/assets/senior.png" alt="Avatar Perro" />
+				</div>
+				<div class="avatar-name">Kona</div>
+			</div>
+				
 			</div>
 		</div>
 		<footer>Made by N3fia</footer>
