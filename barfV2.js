@@ -114,61 +114,130 @@ document.getElementById("datos").addEventListener("submit", function (event) {
 
 	perros.push(perro);
 
-// 	alert(`${nombre} se ha agregado correctamente!`);
-// }
-// console.log(perros);
+	// 	alert(`${nombre} se ha agregado correctamente!`);
+	// }
+	// console.log(perros);
 
-//La funcion Busco perros va a quedar obsoleta una vez que los perros se muestren como avatar en la seccion mis perros, la busqueda se replazaria por un click en la ui
-
-function buscoPerro() {
-	let nombreBusca = prompt(
-		"Ingresa el nombre del perro que buscas(existentes): " +
-			perros.map((p) => p.nombre)
-	); // cambiar para que muestre una lista de los nombres en la entrega final
-
-	let perroB = perros.find((d) => d.nombre === nombreBusca);
-
-	if (perroB) {
-		alert(
-			`Nombre: ${perroB.nombre}\nPeso ${perroB.peso} kg\nEdad: ${
-				perroB.edad
-			} años\nTipo de actividad: ${
-				perroB.queActividad
-			}\nPeso de la porcion diaria: ${perroB.totalDia.toFixed(
-				3
-			)}kg\nLa dieta esta compuesta por:\n Cantidad de Hueso: ${perroB.dietaCompuestaPor.hueso.toFixed(
-				2
-			)} kg\n Cantidad de Carne: ${perroB.dietaCompuestaPor.carne.toFixed(
-				2
-			)} kg\n Cantidad de Vegetales: ${perroB.dietaCompuestaPor.vegetales.toFixed(
-				2
-			)} kg\n Cantidad de Semillas: ${perroB.dietaCompuestaPor.semillas.toFixed(
-				2
-			)} kg`
-		);
-	} else {
-		alert("Ese perro no se ha ingresado aún");
+	//MOSTRAR DATOS DE LA FORM EN LA SECCION  RESULTADOS
+	function displayResultados(perro) {
+		document.querySelector(
+			".resultado h3"
+		).innerText = `Receta para "${perro.nombre}"`;
+		document.querySelector(
+			".resultado p:nth-of-type(1)"
+		).innerText = `Peso: ${perro.peso} kg`;
+		document.querySelector(
+			".resultado p:nth-of-type(2)"
+		).innerText = `Edad: ${perro.edad} años`;
+		document.querySelector(
+			".resultado p:nth-of-type(3)"
+		).innerText = `Actividad: ${perro.queActividad}`;
+		document.querySelector(
+			".resultado p:nth-of-type(4)"
+		).innerText = `Peso de la porcion diaria: ${perro.totalDia.toFixed(2)} kg`;
+		document.querySelector(
+			".resultado ul li:nth-of-type(1)"
+		).innerText = `Huesos Carnosos: ${perro.dietaCompuestaPor.hueso.toFixed(
+			2
+		)} kg`;
+		document.querySelector(
+			".resultado ul li:nth-of-type(2)"
+		).innerText = `Carne Muscular: ${perro.dietaCompuestaPor.carne.toFixed(
+			2
+		)} kg`;
+		document.querySelector(
+			".resultado ul li:nth-of-type(3)"
+		).innerText = `Vegetales: ${perro.dietaCompuestaPor.vegetales.toFixed(
+			2
+		)} kg`;
+		document.querySelector(
+			".resultado ul li:nth-of-type(4)"
+		).innerText = `Semillas: ${perro.dietaCompuestaPor.semillas.toFixed(2)} kg`;
 	}
-}
+
+	displayResultados(perro);
+
+	//La funcion Busco perros va a quedar obsoleta una vez que los perros se muestren como avatar en la seccion mis perros, la busqueda se replazaria por un click en la ui
+
+	// function buscoPerro() {
+	// 	let nombreBusca = prompt(
+	// 		"Ingresa el nombre del perro que buscas(existentes): " +
+	// 			perros.map((p) => p.nombre)
+	// 	); // cambiar para que muestre una lista de los nombres en la entrega final
+
+	// 	let perroB = perros.find((d) => d.nombre === nombreBusca);
+
+	// 	if (perroB) {
+	// 		alert(
+	// 			`Nombre: ${perroB.nombre}\nPeso ${perroB.peso} kg\nEdad: ${
+	// 				perroB.edad
+	// 			} años\nTipo de actividad: ${
+	// 				perroB.queActividad
+	// 			}\nPeso de la porcion diaria: ${perroB.totalDia.toFixed(
+	// 				3
+	// 			)}kg\nLa dieta esta compuesta por:\n Cantidad de Hueso: ${perroB.dietaCompuestaPor.hueso.toFixed(
+	// 				2
+	// 			)} kg\n Cantidad de Carne: ${perroB.dietaCompuestaPor.carne.toFixed(
+	// 				2
+	// 			)} kg\n Cantidad de Vegetales: ${perroB.dietaCompuestaPor.vegetales.toFixed(
+	// 				2
+	// 			)} kg\n Cantidad de Semillas: ${perroB.dietaCompuestaPor.semillas.toFixed(
+	// 				2
+	// 			)} kg`
+	// 		);
+	// 	} else {
+	// 		alert("Ese perro no se ha ingresado aún");
+	// 	}
+	// }
+	// SUBSTITUCION DE AGREGAR PERRO PARA QUE CREE EL EVATAR CON EL NOMBRE
+	const avatarContainer = document.createElement("div");
+	avatarContainer.classList.add("avatar-container");
+
+	const avatar = document.createElement("div");
+	avatar.classList.add("avatar");
+
+	const avatarImg = document.createElement("img");
+	avatarImg.src = "./assets/adult.png"; // Placeholder image
+	avatarImg.alt = "Avatar Perro";
+	avatar.appendChild(avatarImg);
+
+	const avatarName = document.createElement("div");
+	avatarName.classList.add("avatar-name");
+	avatarName.innerText = nombre;
+
+	avatarContainer.appendChild(avatar);
+	avatarContainer.appendChild(avatarName);
+
+	// SUBSTITUCION DE BUSCAR PERRO PARA HACER CLICK EN PERRO EN LUGAR DE BUSCAR POR NOMBRE
+	avatarContainer.addEventListener("click", function () {
+		displayResultados(perro);
+	});
+
+	document.getElementById("misperros").appendChild(avatarContainer);
+
+	alert(`${nombre} se ha agregado correctamente!`);
+
+	event.target.reset();
+});
 
 // esta funcion tambien va aquedar obsoleta cuando los datos sean tomados desde los inputs de la form
-function calculadoraBarf() {
-	let opcion;
-	while (opcion !== 3) {
-		opcion = prompt(`Que quieres hacer? (ingresa el numero de la opción)
-            1 - Ingresar nuevo perro
-            2 - Mostrar perro existente
-            3 - Salir`);
-		if (opcion === "1") {
-			nuevoPerro();
-		} else if (opcion === "2") {
-			buscoPerro();
-		} else if (opcion === "3") {
-			alert("Adios!");
-		} else {
-			alert("Opción invalida, elige 1, 2 o 3");
-		}
-	}
-}
+// function calculadoraBarf() {
+// 	let opcion;
+// 	while (opcion !== 3) {
+// 		opcion = prompt(`Que quieres hacer? (ingresa el numero de la opción)
+//             1 - Ingresar nuevo perro
+//             2 - Mostrar perro existente
+//             3 - Salir`);
+// 		if (opcion === "1") {
+// 			nuevoPerro();
+// 		} else if (opcion === "2") {
+// 			buscoPerro();
+// 		} else if (opcion === "3") {
+// 			alert("Adios!");
+// 		} else {
+// 			alert("Opción invalida, elige 1, 2 o 3");
+// 		}
+// 	}
+// }
 
-calculadoraBarf();
+// calculadoraBarf();
