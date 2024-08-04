@@ -37,6 +37,7 @@
 	font-style: normal;
 }
 
+/*ESTILOS GENERALES*/
 body {
 	background-image: url("../assets/paw@1x-1.0s-1084px-322px\ \(1\).svg");
 	background-repeat: repeat;
@@ -212,6 +213,7 @@ footer {
 	text-shadow: 0px 0px 6px var(--light-accent-color);
 }
 
+/* MOBILE */
 @media only screen and (max-width: 768px) {
 	.container {
 		grid-template-columns: 1fr;
