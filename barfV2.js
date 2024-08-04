@@ -5,7 +5,6 @@
 //Nombre
 //Edad : ingresada en años
 //Peso actual: en kgs.
-//Raza : chica / mediana / grande --> LO VOY A AGREGAR EN LA VERSION FINAL
 //Actividad : bajo/ medio / alto (dependiendo de las horas activas al dia)
 
 // Calculo
@@ -21,13 +20,8 @@
 // NOTA . PARA LA ENTREGA 2 ESTOY USANDO PROMPTS Y ALERTS, la idea del proyecto final es que los datos sean ingresados a traves de una form y los resultados se muestren en una tarjeta.
 //Cuando haya mas de 1 perro ingresado, tambien se va a mostrar la lista de las entradas ya hechas con la fecha en la cual se crearon y al seleccionarla se mostraria la tarjeta correspondiente.
 
-alert("Bienvenido a la Calculadora BARF / Edicion Perros");
-
 let perros = []; // array donde guardar los distintos perros ingresados, y poder buscar la info de los ya agregados
 
-// calculo de porcentaje segun peso y edad para definir la porcion diaria en kilos. Los cachorros (perros menores de 1 año y medio, deben consuir al menos el 10% de su peso durante esta etapa)
-// los perros adultos o seniors tienen una base de 2% de su peso a menos que la actividad sea alta.
-// aca podriamos refinar aun mas haciendo variaciones entre peso y actividad..
 function calcularDieta(peso, edad, actividad) {
 	let porcentajeDiario;
 
@@ -87,9 +81,9 @@ function nuevoPerro() {
 
 	alert(`${nombre} se ha agregado correctamente!`);
 }
-console.log(perros);
+// console.log(perros);
 
-// La idea en la entrega final es que en algun lado del HTML se vaya populando la lista de perror ingresados, de forma que sea mas facil para el usuario entender que se agrego y que no
+//La funcion Busco perros va a quedar obsoleta una vez que los perros se muestren como avatar en la seccion mis perros, la busqueda se replazaria por un click en la ui
 
 function buscoPerro() {
 	let nombreBusca = prompt(
@@ -122,6 +116,7 @@ function buscoPerro() {
 	}
 }
 
+// esta funcion tambien va aquedar obsoleta cuando los datos sean tomados desde los inputs de la form
 function calculadoraBarf() {
 	let opcion;
 	while (opcion !== 3) {
