@@ -68,37 +68,14 @@ function porcentajeQueQuiero(porcionDia) {
 	};
 }
 
-// function nuevoPerro() {
-// 	let nombre = prompt("Nombre del perro:");
-// 	let peso = parseFloat(prompt("Peso actual en kg:")); //el parseFloat ya que el peso puede tener decimales
-// 	let edad = parseInt(prompt("Edad en años:"));
-// 	let actividad = prompt(
-// 		"Que tipo de actividad tiene tu mascota? ('bajo', 'medio', 'alto'):"
-// 	);
-
-// 	let porcionDia2 = calcularDieta(peso, edad, actividad);
-// 	let ingredientes = porcentajeQueQuiero(porcionDia2);
-
-// 	let perro = {
-// 		nombre: nombre,
-// 		peso: peso,
-// 		edad: edad,
-// 		queActividad: actividad,
-// 		totalDia: porcionDia2,
-// 		dietaCompuestaPor: ingredientes,
-// 	};
-
-// 	perros.push(perro);
-
-// funcion nuevo perro reemplazada para tomar los datos desde los inputs de las forms
-
 //Capitalizacion del nombre del perro
 function capitalizarPrimeraLetra(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+//voy a convertir esto en una funcion para procesar formulario y asi poder usarlo en lugar de la funcion anonima del eveno submit para la entrega final... ahora no puedo pensar mas xD
 document.getElementById("datos").addEventListener("submit", function (event) {
-	event.preventDefault(); //Entiendo que con esto evito que la pagina haga reload..no se si lo aplique bien
+	event.preventDefault(); //Entiendo que con esto evito que la pagina haga reload..no se si lo aplique bien pero funciona =)
 
 	let nombre = document
 		.querySelector('input[name="nombre"]')
@@ -124,15 +101,14 @@ document.getElementById("datos").addEventListener("submit", function (event) {
 	sessionStorage.setItem("perros", JSON.stringify(perros));
 
 	displayResultados(perro);
-	crearAvatarPerro(perro);
+
+	// crearAvatarPerro(perro);
+	actualizarAvataresPerros();
 
 	alert(`${nombreCapitalizado} se ha agregado correctamente!`);
+
 	event.target.reset();
 });
-
-// 	alert(`${nombre} se ha agregado correctamente!`);
-// }
-// console.log(perros);
 
 //MOSTRAR DATOS DE LA FORM EN LA SECCION  RESULTADOS
 function displayResultados(perro) {
@@ -169,38 +145,6 @@ function displayResultados(perro) {
 	).innerText = `Semillas: ${perro.dietaCompuestaPor.semillas.toFixed(3)} kg`;
 }
 
-//La funcion Busco perros va a quedar obsoleta una vez que los perros se muestren como avatar en la seccion mis perros, la busqueda se replazaria por un click en la ui
-
-// function buscoPerro() {
-// 	let nombreBusca = prompt(
-// 		"Ingresa el nombre del perro que buscas(existentes): " +
-// 			perros.map((p) => p.nombre)
-// 	); // cambiar para que muestre una lista de los nombres en la entrega final
-
-// 	let perroB = perros.find((d) => d.nombre === nombreBusca);
-
-// 	if (perroB) {
-// 		alert(
-// 			`Nombre: ${perroB.nombre}\nPeso ${perroB.peso} kg\nEdad: ${
-// 				perroB.edad
-// 			} años\nTipo de actividad: ${
-// 				perroB.queActividad
-// 			}\nPeso de la porcion diaria: ${perroB.totalDia.toFixed(
-// 				3
-// 			)}kg\nLa dieta esta compuesta por:\n Cantidad de Hueso: ${perroB.dietaCompuestaPor.hueso.toFixed(
-// 				2
-// 			)} kg\n Cantidad de Carne: ${perroB.dietaCompuestaPor.carne.toFixed(
-// 				2
-// 			)} kg\n Cantidad de Vegetales: ${perroB.dietaCompuestaPor.vegetales.toFixed(
-// 				2
-// 			)} kg\n Cantidad de Semillas: ${perroB.dietaCompuestaPor.semillas.toFixed(
-// 				2
-// 			)} kg`
-// 		);
-// 	} else {
-// 		alert("Ese perro no se ha ingresado aún");
-// 	}
-// }
 // SUBSTITUCION DE AGREGAR PERRO PARA QUE CREE EL EVATAR CON EL NOMBRE
 function crearAvatarPerro(perro, index) {
 	const avatarContainer = document.createElement("div");
@@ -210,7 +154,7 @@ function crearAvatarPerro(perro, index) {
 	avatar.classList.add("avatar");
 
 	const avatarImg = document.createElement("img");
-	avatarImg.src = "./assets/adult.png"; // Placeholder image
+	avatarImg.src = "./assets/adult.png";
 	avatarImg.alt = "Avatar Perro";
 	avatar.appendChild(avatarImg);
 
@@ -221,7 +165,8 @@ function crearAvatarPerro(perro, index) {
 	const deleteButton = document.createElement("button");
 	deleteButton.innerText = "Borrar";
 	deleteButton.classList.add("delete-button");
-	deleteButton.addEventListener("click", function () {
+	deleteButton.addEventListener("click", function (event) {
+		event.stopPropagation(); // la idea es evitar que se dispare el click al borrar, pero no se si con preventDefault hubiese alcanzado
 		eliminarPerro(index);
 	});
 
@@ -238,33 +183,15 @@ function crearAvatarPerro(perro, index) {
 }
 
 function eliminarPerro(index) {
-	perros.splice(index, 1); // para eliminar el perro del array
+	perros.splice(index, 1);
 	sessionStorage.setItem("perros", JSON.stringify(perros));
+	actualizarAvataresPerros();
+}
 
-	document.getElementById("misperros").innerHTML = "";
-	perros.array.forEach(crearAvatarPerro);
+function actualizarAvataresPerros() {
+	const container = document.getElementById("misperros");
+	container.innerHTML = "";
+	perros.forEach((perro, index) => crearAvatarPerro(perro, index));
 }
 
 perros.forEach(crearAvatarPerro);
-
-// esta funcion tambien va aquedar obsoleta cuando los datos sean tomados desde los inputs de la form
-// function calculadoraBarf() {
-// 	let opcion;
-// 	while (opcion !== 3) {
-// 		opcion = prompt(`Que quieres hacer? (ingresa el numero de la opción)
-//             1 - Ingresar nuevo perro
-//             2 - Mostrar perro existente
-//             3 - Salir`);
-// 		if (opcion === "1") {
-// 			nuevoPerro();
-// 		} else if (opcion === "2") {
-// 			buscoPerro();
-// 		} else if (opcion === "3") {
-// 			alert("Adios!");
-// 		} else {
-// 			alert("Opción invalida, elige 1, 2 o 3");
-// 		}
-// 	}
-// }
-
-// calculadoraBarf();
