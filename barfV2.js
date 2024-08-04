@@ -20,7 +20,7 @@
 // NOTA . PARA LA ENTREGA 2 ESTOY USANDO PROMPTS Y ALERTS, la idea del proyecto final es que los datos sean ingresados a traves de una form y los resultados se muestren en una tarjeta.
 //Cuando haya mas de 1 perro ingresado, tambien se va a mostrar la lista de las entradas ya hechas con la fecha en la cual se crearon y al seleccionarla se mostraria la tarjeta correspondiente.
 
-let perros = []; // array donde guardar los distintos perros ingresados, y poder buscar la info de los ya agregados
+let perros = JSON.parse(sessionStorage.getItem("perros")) || []; // array donde guardar los distintos perros ingresados, y poder buscar la info de los ya agregados con el sessionStorage
 
 function calcularDieta(peso, edad, actividad) {
 	// let porcentajeDiario;
@@ -92,10 +92,18 @@ function porcentajeQueQuiero(porcionDia) {
 
 // funcion nuevo perro reemplazada para tomar los datos desde los inputs de las forms
 
+//Capitalizacion del nombre del perro
+function capitalizarPrimeraLetra(str) {
+	return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 document.getElementById("datos").addEventListener("submit", function (event) {
 	event.preventDefault(); //Entiendo que con esto evito que la pagina haga reload..no se si lo aplique bien
 
-	let nombre = document.querySelector('input[name="nombre"]').value;
+	let nombre = document
+		.querySelector('input[name="nombre"]')
+		.value.toLowerCase(); // conversin a minusculas del nombre del perro
+	let nombreCapitalizado = capitalizarPrimeraLetra(nombre);
 	let peso = parseFloat(document.querySelector('input[name="peso"]').value);
 	let edad = parseInt(document.querySelector('input[name="edad"]').value);
 	let actividad = document.querySelector('select[name="actividad"]').value;
@@ -104,7 +112,7 @@ document.getElementById("datos").addEventListener("submit", function (event) {
 	let ingredientes = porcentajeQueQuiero(porcionDia2);
 
 	let perro = {
-		nombre: nombre,
+		nombre: nombreCapitalizado,
 		peso: peso,
 		edad: edad,
 		queActividad: actividad,
