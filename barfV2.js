@@ -121,83 +121,88 @@ document.getElementById("datos").addEventListener("submit", function (event) {
 	};
 
 	perros.push(perro);
-
-	// 	alert(`${nombre} se ha agregado correctamente!`);
-	// }
-	// console.log(perros);
-
-	//MOSTRAR DATOS DE LA FORM EN LA SECCION  RESULTADOS
-	function displayResultados(perro) {
-		document.querySelector(
-			".resultado h3"
-		).innerText = `Receta para "${perro.nombre}"`;
-		document.querySelector(
-			".resultado p:nth-of-type(1)"
-		).innerText = `Peso: ${perro.peso} kg`;
-		document.querySelector(
-			".resultado p:nth-of-type(2)"
-		).innerText = `Edad: ${perro.edad} años`;
-		document.querySelector(
-			".resultado p:nth-of-type(3)"
-		).innerText = `Actividad: ${perro.queActividad}`;
-		document.querySelector(
-			".resultado p:nth-of-type(4)"
-		).innerText = `Peso de la porcion diaria: ${perro.totalDia.toFixed(2)} kg`;
-		document.querySelector(
-			".resultado ul li:nth-of-type(1)"
-		).innerText = `Huesos Carnosos: ${perro.dietaCompuestaPor.hueso.toFixed(
-			2
-		)} kg`;
-		document.querySelector(
-			".resultado ul li:nth-of-type(2)"
-		).innerText = `Carne Muscular: ${perro.dietaCompuestaPor.carne.toFixed(
-			2
-		)} kg`;
-		document.querySelector(
-			".resultado ul li:nth-of-type(3)"
-		).innerText = `Vegetales: ${perro.dietaCompuestaPor.vegetales.toFixed(
-			2
-		)} kg`;
-		document.querySelector(
-			".resultado ul li:nth-of-type(4)"
-		).innerText = `Semillas: ${perro.dietaCompuestaPor.semillas.toFixed(2)} kg`;
-	}
+	sessionStorage.setItem("perros", JSON.stringify(perros));
 
 	displayResultados(perro);
+	crearAvatarPerro(perro);
 
-	//La funcion Busco perros va a quedar obsoleta una vez que los perros se muestren como avatar en la seccion mis perros, la busqueda se replazaria por un click en la ui
+	alert(`${nombreCapitalizado} se ha agregado correctamente!`);
+	event.target.reset();
+});
 
-	// function buscoPerro() {
-	// 	let nombreBusca = prompt(
-	// 		"Ingresa el nombre del perro que buscas(existentes): " +
-	// 			perros.map((p) => p.nombre)
-	// 	); // cambiar para que muestre una lista de los nombres en la entrega final
+// 	alert(`${nombre} se ha agregado correctamente!`);
+// }
+// console.log(perros);
 
-	// 	let perroB = perros.find((d) => d.nombre === nombreBusca);
+//MOSTRAR DATOS DE LA FORM EN LA SECCION  RESULTADOS
+function displayResultados(perro) {
+	document.querySelector(
+		".resultado h3"
+	).innerText = `Receta para "${perro.nombre}"`;
+	document.querySelector(
+		".resultado p:nth-of-type(1)"
+	).innerText = `Peso: ${perro.peso} kg`;
+	document.querySelector(
+		".resultado p:nth-of-type(2)"
+	).innerText = `Edad: ${perro.edad} años`;
+	document.querySelector(
+		".resultado p:nth-of-type(3)"
+	).innerText = `Actividad: ${perro.queActividad}`;
+	document.querySelector(
+		".resultado p:nth-of-type(4)"
+	).innerText = `Peso de la porcion diaria: ${perro.totalDia.toFixed(2)} kg`;
+	document.querySelector(
+		".resultado ul li:nth-of-type(1)"
+	).innerText = `Huesos Carnosos: ${perro.dietaCompuestaPor.hueso.toFixed(
+		3
+	)} kg`;
+	document.querySelector(
+		".resultado ul li:nth-of-type(2)"
+	).innerText = `Carne Muscular: ${perro.dietaCompuestaPor.carne.toFixed(
+		3
+	)} kg`;
+	document.querySelector(
+		".resultado ul li:nth-of-type(3)"
+	).innerText = `Vegetales: ${perro.dietaCompuestaPor.vegetales.toFixed(3)} kg`;
+	document.querySelector(
+		".resultado ul li:nth-of-type(4)"
+	).innerText = `Semillas: ${perro.dietaCompuestaPor.semillas.toFixed(3)} kg`;
+}
 
-	// 	if (perroB) {
-	// 		alert(
-	// 			`Nombre: ${perroB.nombre}\nPeso ${perroB.peso} kg\nEdad: ${
-	// 				perroB.edad
-	// 			} años\nTipo de actividad: ${
-	// 				perroB.queActividad
-	// 			}\nPeso de la porcion diaria: ${perroB.totalDia.toFixed(
-	// 				3
-	// 			)}kg\nLa dieta esta compuesta por:\n Cantidad de Hueso: ${perroB.dietaCompuestaPor.hueso.toFixed(
-	// 				2
-	// 			)} kg\n Cantidad de Carne: ${perroB.dietaCompuestaPor.carne.toFixed(
-	// 				2
-	// 			)} kg\n Cantidad de Vegetales: ${perroB.dietaCompuestaPor.vegetales.toFixed(
-	// 				2
-	// 			)} kg\n Cantidad de Semillas: ${perroB.dietaCompuestaPor.semillas.toFixed(
-	// 				2
-	// 			)} kg`
-	// 		);
-	// 	} else {
-	// 		alert("Ese perro no se ha ingresado aún");
-	// 	}
-	// }
-	// SUBSTITUCION DE AGREGAR PERRO PARA QUE CREE EL EVATAR CON EL NOMBRE
+//La funcion Busco perros va a quedar obsoleta una vez que los perros se muestren como avatar en la seccion mis perros, la busqueda se replazaria por un click en la ui
+
+// function buscoPerro() {
+// 	let nombreBusca = prompt(
+// 		"Ingresa el nombre del perro que buscas(existentes): " +
+// 			perros.map((p) => p.nombre)
+// 	); // cambiar para que muestre una lista de los nombres en la entrega final
+
+// 	let perroB = perros.find((d) => d.nombre === nombreBusca);
+
+// 	if (perroB) {
+// 		alert(
+// 			`Nombre: ${perroB.nombre}\nPeso ${perroB.peso} kg\nEdad: ${
+// 				perroB.edad
+// 			} años\nTipo de actividad: ${
+// 				perroB.queActividad
+// 			}\nPeso de la porcion diaria: ${perroB.totalDia.toFixed(
+// 				3
+// 			)}kg\nLa dieta esta compuesta por:\n Cantidad de Hueso: ${perroB.dietaCompuestaPor.hueso.toFixed(
+// 				2
+// 			)} kg\n Cantidad de Carne: ${perroB.dietaCompuestaPor.carne.toFixed(
+// 				2
+// 			)} kg\n Cantidad de Vegetales: ${perroB.dietaCompuestaPor.vegetales.toFixed(
+// 				2
+// 			)} kg\n Cantidad de Semillas: ${perroB.dietaCompuestaPor.semillas.toFixed(
+// 				2
+// 			)} kg`
+// 		);
+// 	} else {
+// 		alert("Ese perro no se ha ingresado aún");
+// 	}
+// }
+// SUBSTITUCION DE AGREGAR PERRO PARA QUE CREE EL EVATAR CON EL NOMBRE
+function crearAvatarPerro(perro, index) {
 	const avatarContainer = document.createElement("div");
 	avatarContainer.classList.add("avatar-container");
 
@@ -211,10 +216,18 @@ document.getElementById("datos").addEventListener("submit", function (event) {
 
 	const avatarName = document.createElement("div");
 	avatarName.classList.add("avatar-name");
-	avatarName.innerText = nombre;
+	avatarName.innerText = perro.nombre;
+
+	const deleteButton = document.createElement("button");
+	deleteButton.innerText = "Borrar";
+	deleteButton.classList.add("delete-button");
+	deleteButton.addEventListener("click", function () {
+		eliminarPerro(index);
+	});
 
 	avatarContainer.appendChild(avatar);
 	avatarContainer.appendChild(avatarName);
+	avatarContainer.appendChild(deleteButton);
 
 	// SUBSTITUCION DE BUSCAR PERRO PARA HACER CLICK EN PERRO EN LUGAR DE BUSCAR POR NOMBRE
 	avatarContainer.addEventListener("click", function () {
@@ -222,11 +235,17 @@ document.getElementById("datos").addEventListener("submit", function (event) {
 	});
 
 	document.getElementById("misperros").appendChild(avatarContainer);
+}
 
-	alert(`${nombre} se ha agregado correctamente!`);
+function eliminarPerro(index) {
+	perros.splice(index, 1); // para eliminar el perro del array
+	sessionStorage.setItem("perros", JSON.stringify(perros));
 
-	event.target.reset();
-});
+	document.getElementById("misperros").innerHTML = "";
+	perros.array.forEach(crearAvatarPerro);
+}
+
+perros.forEach(crearAvatarPerro);
 
 // esta funcion tambien va aquedar obsoleta cuando los datos sean tomados desde los inputs de la form
 // function calculadoraBarf() {
