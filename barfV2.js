@@ -23,15 +23,26 @@
 let perros = []; // array donde guardar los distintos perros ingresados, y poder buscar la info de los ya agregados
 
 function calcularDieta(peso, edad, actividad) {
-	let porcentajeDiario;
+	// let porcentajeDiario;
 
-	if (edad < 1.5) {
-		porcentajeDiario = 0.1;
-	} else if (actividad === "alto") {
-		porcentajeDiario = 0.03;
-	} else {
-		porcentajeDiario = 0.02;
-	}
+	// if (edad < 1.5) {
+	// 	porcentajeDiario = 0.1;
+	// } else if (actividad === "alto") {
+	// 	porcentajeDiario = 0.03;
+	// } else {
+	// 	porcentajeDiario = 0.02;
+	// }
+
+	let porcentajeDiario =
+		edad < 1.5
+			? 0.1
+			: edad > 7
+			? actividad === "bajo"
+				? 0.02
+				: 0.03
+			: actividad === "alto"
+			? 0.03
+			: 0.02;
 
 	let porcionDia = peso * porcentajeDiario;
 	return porcionDia;
@@ -57,13 +68,37 @@ function porcentajeQueQuiero(porcionDia) {
 	};
 }
 
-function nuevoPerro() {
-	let nombre = prompt("Nombre del perro:");
-	let peso = parseFloat(prompt("Peso actual en kg:")); //el parseFloat ya que el peso puede tener decimales
-	let edad = parseInt(prompt("Edad en años:"));
-	let actividad = prompt(
-		"Que tipo de actividad tiene tu mascota? ('bajo', 'medio', 'alto'):"
-	);
+// function nuevoPerro() {
+// 	let nombre = prompt("Nombre del perro:");
+// 	let peso = parseFloat(prompt("Peso actual en kg:")); //el parseFloat ya que el peso puede tener decimales
+// 	let edad = parseInt(prompt("Edad en años:"));
+// 	let actividad = prompt(
+// 		"Que tipo de actividad tiene tu mascota? ('bajo', 'medio', 'alto'):"
+// 	);
+
+// 	let porcionDia2 = calcularDieta(peso, edad, actividad);
+// 	let ingredientes = porcentajeQueQuiero(porcionDia2);
+
+// 	let perro = {
+// 		nombre: nombre,
+// 		peso: peso,
+// 		edad: edad,
+// 		queActividad: actividad,
+// 		totalDia: porcionDia2,
+// 		dietaCompuestaPor: ingredientes,
+// 	};
+
+// 	perros.push(perro);
+
+// funcion nuevo perro reemplazada para tomar los datos desde los inputs de las forms
+
+document.getElementById("datos").addEventListener("submit", function (event) {
+	event.preventDefault(); //Entiendo que con esto evito que la pagina haga reload..no se si lo aplique bien
+
+	let nombre = document.querySelector('input[name="nombre"]').value;
+	let peso = parseFloat(document.querySelector('input[name="peso"]').value);
+	let edad = parseInt(document.querySelector('input[name="edad"]').value);
+	let actividad = document.querySelector('select[name="actividad"]').value;
 
 	let porcionDia2 = calcularDieta(peso, edad, actividad);
 	let ingredientes = porcentajeQueQuiero(porcionDia2);
@@ -79,8 +114,8 @@ function nuevoPerro() {
 
 	perros.push(perro);
 
-	alert(`${nombre} se ha agregado correctamente!`);
-}
+// 	alert(`${nombre} se ha agregado correctamente!`);
+// }
 // console.log(perros);
 
 //La funcion Busco perros va a quedar obsoleta una vez que los perros se muestren como avatar en la seccion mis perros, la busqueda se replazaria por un click en la ui
