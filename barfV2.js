@@ -23,16 +23,6 @@
 let perros = JSON.parse(sessionStorage.getItem("perros")) || []; // array donde guardar los distintos perros ingresados, y poder buscar la info de los ya agregados con el sessionStorage
 
 function calcularDieta(peso, edad, actividad) {
-	// let porcentajeDiario;
-
-	// if (edad < 1.5) {
-	// 	porcentajeDiario = 0.1;
-	// } else if (actividad === "alto") {
-	// 	porcentajeDiario = 0.03;
-	// } else {
-	// 	porcentajeDiario = 0.02;
-	// }
-
 	let porcentajeDiario =
 		edad < 1.5
 			? 0.1
@@ -102,10 +92,8 @@ document.getElementById("datos").addEventListener("submit", function (event) {
 
 	displayResultados(perro);
 
-	// crearAvatarPerro(perro);
 	actualizarAvataresPerros();
 
-	// alert(`${nombreCapitalizado} se ha agregado correctamente!`);
 	Swal.fire({
 		title: `${nombreCapitalizado} se ha agregado correctamente!`,
 		icon: "success",
@@ -161,7 +149,22 @@ function crearAvatarPerro(perro, index) {
 	avatar.classList.add("avatar");
 
 	const avatarImg = document.createElement("img");
-	avatarImg.src = "./assets/adult.png";
+	switch (true) {
+		case perro.edad < 1.5:
+			avatarImg.src = "./assets/puppy.png";
+			break;
+		case perro.edad >= 1.5 && perro.edad <= 7:
+			avatarImg.src = "./assets/adult.png";
+			break;
+		case perro.edad > 7:
+			avatarImg.src = "./assets/senior.png";
+			break;
+		default:
+			avatarImg.src = "./assets/adult.png";
+			break;
+	}
+
+	// avatarImg.src = "./assets/adult.png";
 	avatarImg.alt = "Avatar Perro";
 	avatar.appendChild(avatarImg);
 
