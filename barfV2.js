@@ -105,7 +105,14 @@ document.getElementById("datos").addEventListener("submit", function (event) {
 	// crearAvatarPerro(perro);
 	actualizarAvataresPerros();
 
-	alert(`${nombreCapitalizado} se ha agregado correctamente!`);
+	// alert(`${nombreCapitalizado} se ha agregado correctamente!`);
+	Swal.fire({
+		title: `${nombreCapitalizado} se ha agregado correctamente!`,
+		icon: "success",
+		showConfirmButton: false,
+		position: "center",
+		timer: 1500,
+	});
 
 	event.target.reset();
 });
