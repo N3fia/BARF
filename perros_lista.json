@@ -1,134 +1,132 @@
-{
-	"perros": [
-		{
-			"nombre": "Kona",
-			"peso": 32,
-			"edad": 3,
-			"queActividad": "alto",
-			"totalDia": 0.96,
-			"dietaCompuestaPor": {
-				"hueso": 0.384,
-				"carne": 0.384,
-				"vegetales": 0.144,
-				"semillas": 0.048
-			}
-		},
-		{
-			"nombre": "Max",
-			"peso": 25,
-			"edad": 5,
-			"queActividad": "medio",
-			"totalDia": 0.75,
-			"dietaCompuestaPor": {
-				"hueso": 0.3,
-				"carne": 0.3,
-				"vegetales": 0.1125,
-				"semillas": 0.0375
-			}
-		},
-		{
-			"nombre": "Bella",
-			"peso": 20,
-			"edad": 1,
-			"queActividad": "bajo",
-			"totalDia": 2.0,
-			"dietaCompuestaPor": {
-				"hueso": 0.8,
-				"carne": 0.8,
-				"vegetales": 0.3,
-				"semillas": 0.1
-			}
-		},
-		{
-			"nombre": "Rocky",
-			"peso": 28,
-			"edad": 4,
-			"queActividad": "alto",
-			"totalDia": 0.84,
-			"dietaCompuestaPor": {
-				"hueso": 0.336,
-				"carne": 0.336,
-				"vegetales": 0.126,
-				"semillas": 0.042
-			}
-		},
-		{
-			"nombre": "Luna",
-			"peso": 18,
-			"edad": 2,
-			"queActividad": "medio",
-			"totalDia": 0.54,
-			"dietaCompuestaPor": {
-				"hueso": 0.216,
-				"carne": 0.216,
-				"vegetales": 0.081,
-				"semillas": 0.027
-			}
-		},
-		{
-			"nombre": "Dino",
-			"peso": 30,
-			"edad": 6,
-			"queActividad": "bajo",
-			"totalDia": 0.6,
-			"dietaCompuestaPor": {
-				"hueso": 0.24,
-				"carne": 0.24,
-				"vegetales": 0.09,
-				"semillas": 0.03
-			}
-		},
-		{
-			"nombre": "Selva",
-			"peso": 22,
-			"edad": 3,
-			"queActividad": "alto",
-			"totalDia": 0.66,
-			"dietaCompuestaPor": {
-				"hueso": 0.264,
-				"carne": 0.264,
-				"vegetales": 0.099,
-				"semillas": 0.033
-			}
-		},
-		{
-			"nombre": "Milo",
-			"peso": 15,
-			"edad": 7,
-			"queActividad": "medio",
-			"totalDia": 0.45,
-			"dietaCompuestaPor": {
-				"hueso": 0.18,
-				"carne": 0.18,
-				"vegetales": 0.0675,
-				"semillas": 0.0225
-			}
-		},
-		{
-			"nombre": "Zig",
-			"peso": 35,
-			"edad": 8,
-			"queActividad": "bajo",
-			"totalDia": 0.7,
-			"dietaCompuestaPor": {
-				"hueso": 0.28,
-				"carne": 0.28,
-				"vegetales": 0.105,
-				"semillas": 0.035
-			}
-		},
-		{
-			"nombre": "Bolita",
-			"peso": 27,
-			"edad": 9,
-			"queActividad": "medio",
-			"totalDia": 0.81,
-			"dietaCompuestaPor": {
-				"hueso": 0.324,
-				"carne": 0.324,
-				"vegetales": 0.1215,
-				"semillas": 0.0405
-			}
+[
+	{
+		"nombre": "Kona",
+		"peso": 32,
+		"edad": 3,
+		"queActividad": "alto",
+		"totalDia": 0.96,
+		"dietaCompuestaPor": {
+			"hueso": 0.384,
+			"carne": 0.384,
+			"vegetales": 0.144,
+			"semillas": 0.048
 		}
-	]
-}
+	},
+	{
+		"nombre": "Max",
+		"peso": 25,
+		"edad": 5,
+		"queActividad": "medio",
+		"totalDia": 0.75,
+		"dietaCompuestaPor": {
+			"hueso": 0.3,
+			"carne": 0.3,
+			"vegetales": 0.1125,
+			"semillas": 0.0375
+		}
+	},
+	{
+		"nombre": "Bella",
+		"peso": 20,
+		"edad": 1,
+		"queActividad": "bajo",
+		"totalDia": 2.0,
+		"dietaCompuestaPor": {
+			"hueso": 0.8,
+			"carne": 0.8,
+			"vegetales": 0.3,
+			"semillas": 0.1
+		}
+	},
+	{
+		"nombre": "Rocky",
+		"peso": 28,
+		"edad": 4,
+		"queActividad": "alto",
+		"totalDia": 0.84,
+		"dietaCompuestaPor": {
+			"hueso": 0.336,
+			"carne": 0.336,
+			"vegetales": 0.126,
+			"semillas": 0.042
+		}
+	},
+	{
+		"nombre": "Luna",
+		"peso": 18,
+		"edad": 2,
+		"queActividad": "medio",
+		"totalDia": 0.54,
+		"dietaCompuestaPor": {
+			"hueso": 0.216,
+			"carne": 0.216,
+			"vegetales": 0.081,
+			"semillas": 0.027
+		}
+	},
+	{
+		"nombre": "Dino",
+		"peso": 30,
+		"edad": 6,
+		"queActividad": "bajo",
+		"totalDia": 0.6,
+		"dietaCompuestaPor": {
+			"hueso": 0.24,
+			"carne": 0.24,
+			"vegetales": 0.09,
+			"semillas": 0.03
+		}
+	},
+	{
+		"nombre": "Selva",
+		"peso": 22,
+		"edad": 3,
+		"queActividad": "alto",
+		"totalDia": 0.66,
+		"dietaCompuestaPor": {
+			"hueso": 0.264,
+			"carne": 0.264,
+			"vegetales": 0.099,
+			"semillas": 0.033
+		}
+	},
+	{
+		"nombre": "Milo",
+		"peso": 15,
+		"edad": 7,
+		"queActividad": "medio",
+		"totalDia": 0.45,
+		"dietaCompuestaPor": {
+			"hueso": 0.18,
+			"carne": 0.18,
+			"vegetales": 0.0675,
+			"semillas": 0.0225
+		}
+	},
+	{
+		"nombre": "Zig",
+		"peso": 35,
+		"edad": 8,
+		"queActividad": "bajo",
+		"totalDia": 0.7,
+		"dietaCompuestaPor": {
+			"hueso": 0.28,
+			"carne": 0.28,
+			"vegetales": 0.105,
+			"semillas": 0.035
+		}
+	},
+	{
+		"nombre": "Bolita",
+		"peso": 27,
+		"edad": 9,
+		"queActividad": "medio",
+		"totalDia": 0.81,
+		"dietaCompuestaPor": {
+			"hueso": 0.324,
+			"carne": 0.324,
+			"vegetales": 0.1215,
+			"semillas": 0.0405
+		}
+	}
+]
