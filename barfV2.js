@@ -14,11 +14,7 @@
 //Edad: Adulto
 //Peso Actual: 32kg
 //Peso ideal: 32kg
-//Condicion fisica: pobre / buena / morbida (la condicion fisica varia dependiendo de si el perro necesita subir o bajar de peso, se caclula usando el peso actual y el peso ideal) --> LO SAQUE del criterio en esta oportunidad, lo voy a agregar en el proyecto finalse define si el peso ideal es mayo o menor al peso actual
 //Actividad: Alta / Media / Baja
-
-// NOTA . PARA LA ENTREGA 2 ESTOY USANDO PROMPTS Y ALERTS, la idea del proyecto final es que los datos sean ingresados a traves de una form y los resultados se muestren en una tarjeta.
-//Cuando haya mas de 1 perro ingresado, tambien se va a mostrar la lista de las entradas ya hechas con la fecha en la cual se crearon y al seleccionarla se mostraria la tarjeta correspondiente.
 
 let perros = JSON.parse(sessionStorage.getItem("perros")) || []; // array donde guardar los distintos perros ingresados, y poder buscar la info de los ya agregados con el sessionStorage
 
