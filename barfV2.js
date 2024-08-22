@@ -141,44 +141,6 @@ function capitalizarPrimeraLetra(str) {
 // document.getElementById("datos").addEventListener("submit", function (event) {
 // 	event.preventDefault(); //Entiendo que con esto evito que la pagina haga reload..no se si lo aplique bien pero funciona =)
 
-// 	let nombre = document
-// 		.querySelector('input[name="nombre"]')
-// 		.value.toLowerCase(); // conversin a minusculas del nombre del perro
-// 	let nombreCapitalizado = capitalizarPrimeraLetra(nombre);
-// 	let peso = parseFloat(document.querySelector('input[name="peso"]').value);
-// 	let edad = parseInt(document.querySelector('input[name="edad"]').value);
-// 	let actividad = document.querySelector('select[name="actividad"]').value;
-
-// 	let porcionDia2 = calcularDieta(peso, edad, actividad);
-// 	let ingredientes = porcentajeQueQuiero(porcionDia2);
-
-// 	let perro = {
-// 		nombre: nombreCapitalizado,
-// 		peso: peso,
-// 		edad: edad,
-// 		queActividad: actividad,
-// 		totalDia: porcionDia2,
-// 		dietaCompuestaPor: ingredientes,
-// 	};
-
-// 	perros.push(perro);
-// 	sessionStorage.setItem("perros", JSON.stringify(perros));
-
-// 	displayResultados(perro);
-
-// 	actualizarAvataresPerros();
-
-// 	Swal.fire({
-// 		title: `${nombreCapitalizado} se ha agregado correctamente!`,
-// 		icon: "success",
-// 		showConfirmButton: false,
-// 		position: "center",
-// 		timer: 1500,
-// 	});
-
-// 	event.target.reset();
-// });
-
 //MOSTRAR DATOS DE LA FORM EN LA SECCION  RESULTADOS
 function displayResultados(perro) {
 	document.querySelector(
@@ -267,9 +229,24 @@ function crearAvatarPerro(perro, index) {
 }
 
 function eliminarPerro(index) {
+	const perroEliminado = perros[index].nombre;
 	perros.splice(index, 1);
 	sessionStorage.setItem("perros", JSON.stringify(perros));
 	actualizarAvataresPerros();
+
+	Swal.fire({
+		title: `${perroEliminado} ha sido borrado de "Mis Perros"`,
+		icon: "info",
+		toast: true,
+		position: "top-end",
+		showConfirmButton: false,
+		timer: 1500,
+		timerProgressBar: true,
+		didOpen: (toast) => {
+			toast.addEventListener("mouseenter", Swal.stopTimer);
+			toast.addEventListener("mouseleave", Swal.resumeTimer);
+		},
+	});
 }
 
 function actualizarAvataresPerros() {
