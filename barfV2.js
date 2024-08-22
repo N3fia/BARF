@@ -22,6 +22,26 @@
 
 let perros = JSON.parse(sessionStorage.getItem("perros")) || []; // array donde guardar los distintos perros ingresados, y poder buscar la info de los ya agregados con el sessionStorage
 
+Document.addEventListener("DOMContentLoaded", function () {
+	fetch("./perros_lista.json")
+		.then((response) => {
+			return response.json();
+		})
+		.then((data) => {
+			const select = document.getElementById("perro-select");
+			data.forEach((perro, index) => {
+				const option = document.createElement("option");
+				// option.value = index;
+				option.textContent = perro.nombre;
+				option.dataset.perro = JSON.stringify(perro);
+				select.appendChild(option);
+			});
+		})
+		.catch((error) => {
+			console.error("Error cargando archivo JASON", error);
+		});
+});
+
 function calcularDieta(peso, edad, actividad) {
 	let porcentajeDiario =
 		edad < 1.5
