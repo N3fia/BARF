@@ -18,6 +18,7 @@
 
 let perros = JSON.parse(sessionStorage.getItem("perros")) || []; // array donde guardar los distintos perros ingresados, y poder buscar la info de los ya agregados con el sessionStorage
 
+//carga simulacion DB desde un JSON file
 document.addEventListener("DOMContentLoaded", function () {
 	fetch("./perros_lista.json")
 		.then((response) => {
@@ -54,6 +55,7 @@ document.getElementById("perro-select").addEventListener("change", function () {
 	sessionStorage.setItem("perros", JSON.stringify(perros));
 });
 
+//manejo de la form para input de datos de perro
 document.getElementById("datos").addEventListener("submit", function (event) {
 	event.preventDefault();
 	let nombre = document
@@ -132,10 +134,6 @@ function porcentajeQueQuiero(porcionDia) {
 function capitalizarPrimeraLetra(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
-
-//voy a convertir esto en una funcion para procesar formulario y asi poder usarlo en lugar de la funcion anonima del eveno submit para la entrega final... ahora no puedo pensar mas xD
-// document.getElementById("datos").addEventListener("submit", function (event) {
-// 	event.preventDefault(); //Entiendo que con esto evito que la pagina haga reload..no se si lo aplique bien pero funciona =)
 
 //MOSTRAR DATOS DE LA FORM EN LA SECCION  RESULTADOS
 function displayResultados(perro) {
@@ -224,6 +222,7 @@ function crearAvatarPerro(perro, index) {
 	document.getElementById("misperros").appendChild(avatarContainer);
 }
 
+//ELIMINAR PERRO DE "MIS PERROS"
 function eliminarPerro(index) {
 	const perroEliminado = perros[index].nombre;
 	perros.splice(index, 1);
